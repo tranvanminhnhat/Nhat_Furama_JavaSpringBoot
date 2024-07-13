@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link href="/assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/libs/css/style.css">
+    <link rel="stylesheet" href="/assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
+    <link rel="stylesheet" href="/assets/vendor/charts/chartist-bundle/chartist.css">
+    <link rel="stylesheet" href="/assets/vendor/charts/morris-bundle/morris.css">
+    <link rel="stylesheet" href="/assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="/assets/vendor/charts/c3charts/c3.css">
+    <link rel="stylesheet" href="/assets/vendor/fonts/flag-icon-css/flag-icon.min.css">
+    <title>Admin page</title>
+</head>
+
+<body>
+<!-- ============================================================== -->
+<!-- main wrapper -->
+<!-- ============================================================== -->
+<div class="dashboard-main-wrapper">
+    <!-- ============================================================== -->
+    <!-- navbar -->
+    <!-- ============================================================== -->
+    <div class="dashboard-header">
+        <nav class="navbar navbar-expand-lg bg-white fixed-top">
+            <a class="navbar-brand" href="list.html">Furama</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto navbar-right-top">
+                    <li class="nav-item">
+                        <div id="custom-search" class="top-search-bar">
+                            <input class="form-control" type="text" placeholder="Search..">
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown notification">
+                        <a class="nav-link nav-icons" href="#" id="navbarDropdownMenuLink1" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false"><i class="fas fa-fw fa-bell"></i> <span
+                                class="indicator"></span></a>
+                        <ul class="dropdown-menu dropdown-menu-right notification-dropdown">
+                            <li>
+                                <div class="notification-title"> Notification</div>
+                                <div class="notification-list">
+                                    <div class="list-group">
+                                        <a href="#" class="list-group-item list-group-item-action active">
+                                            <div class="notification-info">
+                                                <div class="notification-list-user-img"><img
+                                                        src="../../static/assets/images/avatar-2.jpg" alt=""
+                                                        class="user-avatar-md rounded-circle"></div>
+                                                <div class="notification-list-user-block"><span
+                                                        class="notification-list-user-name">Jeremy Rakestraw</span>accepted
+                                                    your invitation to join the team.
+                                                    <div class="notification-date">2 min ago</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a href="#" class="list-group-item list-group-item-action">
+                                            <div class="notification-info">
+                                                <div class="notification-list-user-img"><img
+                                                        src="../../static/assets/images/avatar-3.jpg" alt=""
+                                                        class="user-avatar-md rounded-circle"></div>
+                                                <div class="notification-list-user-block"><span
+                                                        class="notification-list-user-name">John Abraham </span>is now
+                                                    following you
+                                                    <div class="notification-date">2 days ago</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a href="#" class="list-group-item list-group-item-action">
+                                            <div class="notification-info">
+                                                <div class="notification-list-user-img"><img
+                                                        src="../../static/assets/images/avatar-4.jpg" alt=""
+                                                        class="user-avatar-md rounded-circle"></div>
+                                                <div class="notification-list-user-block"><span
+                                                        class="notification-list-user-name">Monaan Pechi</span> is
+                                                    watching your main repository
+                                                    <div class="notification-date">2 min ago</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a href="#" class="list-group-item list-group-item-action">
+                                            <div class="notification-info">
+                                                <div class="notification-list-user-img"><img
+                                                        src="../../static/assets/images/avatar-5.jpg" alt=""
+                                                        class="user-avatar-md rounded-circle"></div>
+                                                <div class="notification-list-user-block"><span
+                                                        class="notification-list-user-name">Jessica Caruso</span>accepted
+                                                    your invitation to join the team.
+                                                    <div class="notification-date">2 min ago</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="list-footer"><a href="#">View all notifications</a></div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown connection">
+                        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false"> <i class="fas fa-fw fa-th"></i> </a>
+                        <ul class="dropdown-menu dropdown-menu-right connection-dropdown">
+                            <li class="connection-list">
+                                <div class="row">
+                                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
+                                        <a href="#" class="connection-item"><img
+                                                src="../../static/assets/images/github.png" alt=""> <span>Github</span></a>
+                                    </div>
+                                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
+                                        <a href="#" class="connection-item"><img
+                                                src="../../static/assets/images/dribbble.png" alt="">
+                                            <span>Dribbble</span></a>
+                                    </div>
+                                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
+                                        <a href="#" class="connection-item"><img
+                                                src="../../static/assets/images/dropbox.png" alt="">
+                                            <span>Dropbox</span></a>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
+                                        <a href="#" class="connection-item"><img
+                                                src="../../static/assets/images/bitbucket.png" alt="">
+                                            <span>Bitbucket</span></a>
+                                    </div>
+                                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
+                                        <a href="#" class="connection-item"><img
+                                                src="../../static/assets/images/mail_chimp.png"
+                                                alt=""><span>Mail chimp</span></a>
+                                    </div>
+                                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
+                                        <a href="#" class="connection-item"><img
+                                                src="../../static/assets/images/slack.png" alt="">
+                                            <span>Slack</span></a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="conntection-footer"><a href="#">More</a></div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown nav-user">
+                        <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false"><img src="../../static/assets/images/avatar-1.jpg"
+                                                                           alt="" class="user-avatar-md rounded-circle"></a>
+                        <div class="dropdown-menu dropdown-menu-right nav-user-dropdown"
+                             aria-labelledby="navbarDropdownMenuLink2">
+                            <div class="nav-user-info">
+                                <h5 class="mb-0 text-white nav-user-name">John Abraham </h5>
+                                <span class="status"></span><span class="ml-2">Available</span>
+                            </div>
+                            <a class="dropdown-item" href="#"><i class="fas fa-user mr-2"></i>Account</a>
+                            <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Setting</a>
+                            <a class="dropdown-item" href="#"><i class="fas fa-power-off mr-2"></i>Logout</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <!-- ============================================================== -->
+    <!-- end navbar -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- left sidebar -->
+    <!-- ============================================================== -->
+    <div class="nav-left-sidebar sidebar-dark">
+        <div class="menu-list">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav flex-column">
+                        <li class="nav-divider">
+                            Menu
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link active" th:href="@{/admin/customer/list}" aria-expanded="false"
+                               data-target="#submenu-1" aria-controls="submenu-1"><i class="fas fa-users" style="width: 20px;"></i>Customer
+                                List</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link active" th:href="@{/admin/service/list}" aria-expanded="false"
+                               data-target="#submenu-1" aria-controls="submenu-1"><i class="fas fa-taxi" style="width: 20px;"></i>Service
+                                List</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link active" th:href="@{/admin/employee/list}" aria-expanded="false"
+                               data-target="#submenu-1" aria-controls="submenu-1"><i class="fas fa-user-circle" style="width: 20px;"></i>Employee
+                                List</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link active" th:href="@{/admin/contract/list}" aria-expanded="false"
+                               data-target="#submenu-1" aria-controls="submenu-1"><i class="fas fa-id-badge" style="width: 20px;"></i>Contract
+                                List</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link active" th:href="@{/admin/contractDetail/list}" aria-expanded="false"
+                               data-target="#submenu-1" aria-controls="submenu-1"><i class="fas fa-clipboard-list" style="width: 20px;"></i>Contract Detail
+                                List</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="dashboard-wrapper">
+        <div class="dashboard-ecommerce">
+            <div class="container-fluid dashboard-content ">
+                <div class="ecommerce-widget">
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-6 col-sm-12 col-12">
+                            <div class="card">
+                                <div class="card-body p-0">
+                                    <div class="table-responsive" style="padding: 40px 80px 40px 40px;">
+                                        <form th:action="@{/admin/employee/edit}" th:object="${employee}"
+                                              method="post">
+                                            <div>
+                                                <h3 style="font-family: sans-serif; text-align: center;">Edit
+                                                    Employee</h3>
+                                            </div>
+                                            <input type="hidden" class="form-control" th:field="*{employeeId}">
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <label>Employee Name</label>
+                                                    <input type="text" class="form-control" th:field="*{employeeName}">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label>Employee Birthday</label>
+                                                    <input type="date" class="form-control"
+                                                           th:field="*{employeeBirthday}">
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-4">
+                                                    <label>Employee IdCard</label>
+                                                    <input type="text" class="form-control"
+                                                           th:field="*{employeeIdCard}">
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label>Employee Salary</label>
+                                                    <input type="text" class="form-control"
+                                                           th:field="*{employeeSalary}">
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label>Employee Phone</label>
+                                                    <input type="text" class="form-control"
+                                                           th:field="*{employeePhone}">
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <label>Employee Email</label>
+                                                    <input type="email" class="form-control"
+                                                           th:field="*{employeeEmail}">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label>Employee Address</label>
+                                                    <input type="text" class="form-control"
+                                                           th:field="*{employeeAddress}">
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-4">
+                                                    <label>Position</label>
+                                                    <select class="form-control" th:field="*{position}">
+                                                        <option th:each="position : ${positions}"
+                                                                th:value="${position.positionId}"
+                                                                th:text="${position.positionName}"></option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label>Division</label>
+                                                    <select class="form-control" th:field="*{division}">
+                                                        <option th:each="division : ${divisions}"
+                                                                th:value="${division.divisionId}"
+                                                                th:text="${division.divisionName}"></option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label>Education Degree</label>
+                                                    <select class="form-control" th:field="*{educationDegree}">
+                                                        <option th:each="educationDegree : ${educationDegrees}"
+                                                                th:value="${educationDegree.educationDegreeId}"
+                                                                th:text="${educationDegree.educationDegreeName}"></option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <button type="button" style="background-color: #046056; color: #fff;" class="btn" data-toggle="modal" data-target="#editModal">
+                                                Edit Employee
+                                            </button>
+
+                                            <!-- Modal -->
+
+                                            <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel" style="color: #007bff;">Edit Employee</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <h5>Are you sure to edit this employee?</h5>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" data-dismiss="modal" style="background-color: #007bff; color: white;" class="btn">CANCEL</button>
+                                                            <button type="submit" class="btn btn-danger">OK</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Modal -->
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- footer -->
+            <!-- ============================================================== -->
+            <div class="footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                            Copyright © 2022 furama resort DaNang, Viet Nam by <a
+                                href="#">Minh Nhat</a>.
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <div class="text-md-right footer-links d-none d-sm-block">
+                                <a href="#">About</a>
+                                <a href="#">Support</a>
+                                <a href="#">Contact Us</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- end footer -->
+            <!-- ============================================================== -->
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

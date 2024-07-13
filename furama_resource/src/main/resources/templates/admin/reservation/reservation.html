@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a th:href="@{/admin/customer/list}">Customer List</a>
+<form>
+    <table class="table">
+        <thead class="bg-light">
+        <tr class="border-0">
+            <th class="border-0">#</th>
+            <th class="border-0">Customer Id</th>
+            <th class="border-0">Customer Name</th>
+            <th class="border-0">Customer Birthday</th>
+            <th class="border-0">Customer Gender</th>
+            <th class="border-0">Customer IdCard</th>
+            <th class="border-0">Customer Phone</th>
+            <th class="border-0">Customer Email</th>
+            <th class="border-0">Customer Address</th>
+            <th class="border-0">Contract</th>
+            <th class="border-0">CustomerType</th>
+            <th class="text-center" style="width: 66px;">
+                <a th:href="@{/admin/customer/create}"><i class="far fa-plus-square"></i></a>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <th:block th:each="customer : ${customers}">
+            <tr class="">
+                <td>#</td>
+                <td><p th:text="${customer.customerId}"></p></td>
+                <td><p th:text="${customer.customerName}"></p></td>
+                <td><p th:text="${customer.customerBirthday}"></p></td>
+                <td>
+                    <th:block th:if="${customer.customerGender == 1}">
+                        <p>Male</p>
+                    </th:block>
+                    <th:block th:if="${customer.customerGender == 0}">
+                        <p>Female</p>
+                    </th:block>
+                </td>
+                <td><p th:text="${customer.customerIdCard}"></p></td>
+                <td><p th:text="${customer.customerPhone}"></p></td>
+                <td><p th:text="${customer.customerEmail}"></p></td>
+                <td><p th:text="${customer.customerAddress}"></p></td>
+                <td><p></p></td>
+                <td><p th:text="${customer.customerType.customerTypeName}"></p></td>
+                <td class="text-center">
+                    <a th:href="@{/admin/customer/edit/__${customer.customerId}__}" style="color: #fff;"><i class="fas fa-edit text-primary"></i></a>
+                    <a th:href="@{/admin/customer/delete/__${customer.customerId}__}"><i class="far fa-trash-alt text-danger"></i></a>
+                </td>
+            </tr>
+        </th:block>
+        </tbody>
+    </table>
+</form>
+</body>
+</html>
